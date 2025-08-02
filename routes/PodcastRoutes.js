@@ -1,12 +1,12 @@
 import express from "express";
-import Artist from "../models/Artist.js";
+import Podcast from "../models/Podcast.js";
 
 const router = express.Router();
 
 router.get("/", async (req, res) => {
     try {
-        const artists = await Artist.find();
-        res.json(artists);
+        const podcasts = await Podcast.find();
+        res.json(podcasts);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }

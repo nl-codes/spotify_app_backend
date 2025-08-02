@@ -2,7 +2,10 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
-import artistRoutes from "./routes/artistRoutes.js";
+import artistRoutes from "./routes/ArtistRoutes.js";
+import podcastRoutes from "./routes/PodcastRoutes.js";
+import albumRoutes from "./routes/AlbumRoutes.js";
+import mixedRoutes from "./routes/MixedRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -10,6 +13,9 @@ app.use(cors());
 
 app.use(express.json()); // JSON parser
 app.use("/api/artists", artistRoutes);
+app.use("/api/podcasts", podcastRoutes);
+app.use("/api/albums", albumRoutes);
+app.use("/api", mixedRoutes);
 
 // Connect to DB
 mongoose

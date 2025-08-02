@@ -1,12 +1,12 @@
 import express from "express";
-import Artist from "../models/Artist.js";
+import Album from "../models/Albums.js";
 
 const router = express.Router();
 
 router.get("/", async (req, res) => {
     try {
-        const artists = await Artist.find();
-        res.json(artists);
+        const albums = await Album.find();
+        res.json(albums);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
