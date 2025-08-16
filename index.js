@@ -6,7 +6,7 @@ import artistRoutes from "./routes/ArtistRoutes.js";
 import podcastRoutes from "./routes/PodcastRoutes.js";
 import albumRoutes from "./routes/AlbumRoutes.js";
 import songRoutes from "./routes/SongRoutes.js";
-import mixedRoutes from "./routes/MixedRoutes.js";
+import mixedRoutes from "./routes/AlbumArtistPodcastRoutes.js";
 
 dotenv.config();
 const app = express();
