@@ -6,6 +6,7 @@ import artistRoutes from "./routes/ArtistRoutes.js";
 import podcastRoutes from "./routes/PodcastRoutes.js";
 import albumRoutes from "./routes/AlbumRoutes.js";
 import songRoutes from "./routes/SongRoutes.js";
+import libraryRoutes from "./routes/LibraryRoutes.js";
 import mixedRoutes from "./routes/AlbumArtistPodcastRoutes.js";
 
 dotenv.config();
@@ -17,6 +18,7 @@ app.use("/api/artists", artistRoutes);
 app.use("/api/podcasts", podcastRoutes);
 app.use("/api/albums", albumRoutes);
 app.use("/api/songs", songRoutes);
+app.use("/api/library", libraryRoutes);
 app.use("/api", mixedRoutes);
 
 // Connect to DB
