@@ -5,6 +5,7 @@ import cors from "cors";
 import artistRoutes from "./routes/ArtistRoutes.js";
 import podcastRoutes from "./routes/PodcastRoutes.js";
 import albumRoutes from "./routes/AlbumRoutes.js";
+import songRoutes from "./routes/SongRoutes.js";
 import mixedRoutes from "./routes/MixedRoutes.js";
 
 dotenv.config();
@@ -15,6 +16,7 @@ app.use(express.json()); // JSON parser
 app.use("/api/artists", artistRoutes);
 app.use("/api/podcasts", podcastRoutes);
 app.use("/api/albums", albumRoutes);
+app.use("/api/songs", songRoutes);
 app.use("/api", mixedRoutes);
 
 // Connect to DB
