@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
         }).lean();
 
         const albums = await Album.find({
-            fullName: {
+            title: {
                 $in: [
                     "Cigarattes After Sex",
                     "Hit Me Hard and Soft",

@@ -10,7 +10,6 @@ const shuffleArray = (array) => {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
     }
-
     return array;
 };
 
@@ -20,27 +19,15 @@ router.get("/", async (req, res) => {
         const podcasts = await Podcast.find();
         const albums = await Album.find();
 
-        const artistData = artists.slice(0, 3).map((item) => ({
-            ...item._doc,
-            type: "artist",
-        }));
-        const podcastData = podcasts.slice(0, 3).map((item) => ({
-            ...item._doc,
-            type: "podcast",
-        }));
-        const albumData = albums.slice(0, 3).map((item) => ({
-            ...item._doc,
-            type: "album",
-        }));
+        const artistData = shuffleArray(artists).slice(0, 3);
+        const podcastData = shuffleArray(podcasts).slice(0, 3);
+        const albumData = shuffleArray(albums).slice(0, 3);
 
-        // Combine and shuffle
-        const combined = shuffleArray([
-            ...artistData,
-            ...podcastData,
-            ...albumData,
-        ]);
-
-        res.json(combined);
+        res.json({
+            artists: artistData,
+            podcasts: podcastData,
+            albums: albumData,
+        });
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
