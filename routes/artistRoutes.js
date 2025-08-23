@@ -12,4 +12,22 @@ router.get("/", async (req, res) => {
     }
 });
 
+router.get("/:id", async (req, res) => {
+    try {
+        const artist = await Artist.findById(req.params.id);
+
+        if (!artist) {
+            return res.status(404).json({ message: "Artist not found" });
+        }
+
+        res.json(artist);
+    } catch (err) {
+        // Handle invalid ObjectId format
+        if (err.kind === "ObjectId") {
+            return res.status(404).json({ message: "Artist not found" });
+        }
+        res.status(500).json({ message: err.message });
+    }
+});
+
 export default router;

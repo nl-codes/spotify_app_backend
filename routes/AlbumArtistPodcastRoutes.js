@@ -2,6 +2,7 @@ import express from "express";
 import Album from "../models/Albums.js";
 import Artist from "../models/Artist.js";
 import Podcast from "../models/Podcast.js";
+import Song from "../models/Songs.js";
 
 const router = express.Router();
 
@@ -18,15 +19,18 @@ router.get("/", async (req, res) => {
         const artists = await Artist.find();
         const podcasts = await Podcast.find();
         const albums = await Album.find();
+        const songs = await Song.find();
 
         const artistData = shuffleArray(artists).slice(0, 3);
         const podcastData = shuffleArray(podcasts).slice(0, 3);
         const albumData = shuffleArray(albums).slice(0, 3);
+        const songData = shuffleArray(songs).slice(0, 3);
 
         res.json({
             artists: artistData,
             podcasts: podcastData,
             albums: albumData,
+            songs: songData,
         });
     } catch (err) {
         res.status(500).json({ message: err.message });
